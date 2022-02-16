@@ -1,0 +1,15 @@
+C:\Users\Noca\Desktop\Brendo\dotnet\diretorio.NET\bin\Debug\net6.0\diretorio.NET.exe
+C:\Users\Noca\Desktop\Brendo\dotnet\diretorio.NET\bin\Debug\net6.0\diretorio.NET.deps.json
+C:\Users\Noca\Desktop\Brendo\dotnet\diretorio.NET\bin\Debug\net6.0\diretorio.NET.runtimeconfig.json
+C:\Users\Noca\Desktop\Brendo\dotnet\diretorio.NET\bin\Debug\net6.0\diretorio.NET.dll
+C:\Users\Noca\Desktop\Brendo\dotnet\diretorio.NET\bin\Debug\net6.0\ref\diretorio.NET.dll
+C:\Users\Noca\Desktop\Brendo\dotnet\diretorio.NET\bin\Debug\net6.0\diretorio.NET.pdb
+C:\Users\Noca\Desktop\Brendo\dotnet\diretorio.NET\obj\Debug\net6.0\diretorio.NET.csproj.AssemblyReference.cache
+C:\Users\Noca\Desktop\Brendo\dotnet\diretorio.NET\obj\Debug\net6.0\diretorio.NET.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Noca\Desktop\Brendo\dotnet\diretorio.NET\obj\Debug\net6.0\diretorio.NET.AssemblyInfoInputs.cache
+C:\Users\Noca\Desktop\Brendo\dotnet\diretorio.NET\obj\Debug\net6.0\diretorio.NET.AssemblyInfo.cs
+C:\Users\Noca\Desktop\Brendo\dotnet\diretorio.NET\obj\Debug\net6.0\diretorio.NET.csproj.CoreCompileInputs.cache
+C:\Users\Noca\Desktop\Brendo\dotnet\diretorio.NET\obj\Debug\net6.0\diretorio.NET.dll
+C:\Users\Noca\Desktop\Brendo\dotnet\diretorio.NET\obj\Debug\net6.0\ref\diretorio.NET.dll
+C:\Users\Noca\Desktop\Brendo\dotnet\diretorio.NET\obj\Debug\net6.0\diretorio.NET.pdb
+C:\Users\Noca\Desktop\Brendo\dotnet\diretorio.NET\obj\Debug\net6.0\diretorio.NET.genruntimeconfig.cache
