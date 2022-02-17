@@ -1,4 +1,7 @@
-﻿
+﻿Watcher();
+
+while(true)
+{
 
     Console.WriteLine("Digite a opção desejada: ");
     Console.WriteLine("--- 1 - Criar Diretório ---");
@@ -7,13 +10,21 @@
     Console.WriteLine("--- 4 - Criar Arquivo ---");
     Console.WriteLine("--- 5 - Mover arquivo --- ");
     Console.WriteLine("--- 6 - Excluir Arquivo ---");
+    Console.WriteLine("--- 7 - Criar Arquivo CSV ---");    
     Console.WriteLine("--- 0 - Sair ---");
-    var opcao = int.Parse(Console.ReadLine());
+
+    int opcao = int.Parse(Console.ReadLine());
+
     
-    if(opcao == null){
-        Console.WriteLine("Digite uma opção válida");
-        Console.WriteLine();
+    
+    if(opcao == 0){
+        Console.WriteLine("Pressione Enter para sair");
+        Console.ReadLine();
+        return;
+
     }
+
+
 
     
 
@@ -42,24 +53,28 @@ switch (opcao)
     case 4: 
         Console.WriteLine("***Criar Arquivo***");
         Console.WriteLine();
+        CriarArquivo();
         break;
     
     case 5: 
-        Console.WriteLine("***Listar Arquivo***");
+        Console.WriteLine("***Excluir Arquivo***");
         Console.WriteLine();
         break;
 
     case 6: 
-        Console.WriteLine("***Listar Mover***");
+        Console.WriteLine("***Mover Arquivo***");
         Console.WriteLine();
         break;
 
-    case 0: break;
+    
 
-    default:
-     Console.WriteLine("Digite uma opção válida");
-     Console.WriteLine();
-     break;
+    case 0: 
+    
+    break;
+    
+
+    
+}
 }
 
 Console.WriteLine("Pressione Enter para sair");
@@ -67,66 +82,6 @@ Console.WriteLine();
 Console.ReadLine();
 
 
-
-
-// criarGlobo();
-//     var origem = Path.Combine(Environment.CurrentDirectory, "Brasil.txt");
-//     var destino = Path.Combine(Environment.CurrentDirectory, "globo", "América do Sul", "Brasil","Brasil.txt");
-// MoverArquivo(origem, destino);
-
-        
-//         static void MoverArquivo(string origem, string destino)
-//         {
-//             if(!File.Exists(origem)){
-//                 Console.WriteLine("O arquivo não existe na origem");
-//                 CriarArquivo();
-//                 return;
-//             }
-//             if(File.Exists(destino)){
-//                 Console.WriteLine("O arquivo já existe");
-//                 return;
-//             }else
-//             File.Move(origem, destino);
-//         }
-
-//         static void CriarArquivo()
-//         {
-//             var path = Path.Combine(Environment.CurrentDirectory, "Brasil.txt");
-//             if(!File.Exists(path)){
-//             using var sw = File.CreateText(path);
-//             sw.WriteLine("População: 200 milhões");
-//             sw.WriteLine("IDH: 0,901");
-//             sw.WriteLine("Atualizado em: 20/01/2022");
-//             }
-//         }
-
-        
-
-//         static void criarGlobo()
-//         {
-
-//         var path = Path.Combine(Environment.CurrentDirectory, "globo");
-//             if(!Directory.Exists(path))
-//             {
-//                 var dirGlobo = Directory.CreateDirectory(path);
-            
-
-
-//                 var dirAmNorte = dirGlobo.CreateSubdirectory("América do Norte");
-//                 var dirAmCentral = dirGlobo.CreateSubdirectory("América Central");
-//                 var dirAmSul = dirGlobo.CreateSubdirectory("América do Sul");
-
-//                 var dirEUA = dirAmNorte.CreateSubdirectory("Estados Unidos");
-//                 var dirCAN = dirAmNorte.CreateSubdirectory("Canadá");
-//                 var dirMEX = dirAmNorte.CreateSubdirectory("México");
-
-//                 var dirCOR = dirAmCentral.CreateSubdirectory("Costa Rica");
-//                 var dirPAN = dirAmCentral.CreateSubdirectory("Central");
-
-//                 var dirBrasil = dirAmSul.CreateSubdirectory("Brasil");
-//                 var dirChil = dirAmSul.CreateSubdirectory("Chile");
-//             }
-//         }
 
 static string Sanitar(string name){
     foreach (var @char in Path.GetInvalidFileNameChars())
@@ -212,4 +167,66 @@ static void ListarDiretorio(string path)
 
     
 }
+
+
+
+/*--------WATCHER----------*/
+static void Watcher()
+{
+    var pathWatcher = @"C:\Users\Noca\Desktop\Brendo\dotnet\diretorio.NET\Documentos";
+    using var fsw = new FileSystemWatcher(pathWatcher);
+    fsw.Created += OnCreated;
+    fsw.Renamed += OnRenamed;
+    fsw.Deleted += OnDeleted;
+
+    fsw.EnableRaisingEvents = true;
+    fsw.IncludeSubdirectories = true;
+
+    Console.WriteLine("Pressione Enter para encerrar");
+    Console.ReadLine();
+
+    void OnCreated(object sender, FileSystemEventArgs e)
+    {
+        Console.WriteLine($"Foi criado um arquivo {e.Name}");
+    }
+
+
+    void OnDeleted(object sender, FileSystemEventArgs e)
+    {
+        Console.WriteLine($"Foi excluido o arquivo {e.Name}");
+    }
+
+
+    void OnRenamed(object sender, RenamedEventArgs e)
+    {
+        Console.WriteLine($"O arquivo {e.OldName} foi renomeado para {e.Name}");
+    }
+}
+
+static void CriarArquivo(){
+    var path = Path.Combine(Environment.CurrentDirectory, "Documentos");
+        ListarDiretorio(path);
+
+    Console.WriteLine("Digite o nome da pasta onde deseja criar o arquivo: ");
+    var NomePasta = Console.ReadLine();
+
+    var pathPasta = Path.Combine(Environment.CurrentDirectory, "Documentos", $"{NomePasta}");
+
+    Console.WriteLine("Digite o nome do arquivo que deseja criar: ");
+
+    var nomeNovoArquivo = Console.ReadLine();
+    nomeNovoArquivo = Sanitar(nomeNovoArquivo);
+
+    var pathArq = Path.Combine(Environment.CurrentDirectory, "Documentos", $"{NomePasta}", $"{nomeNovoArquivo}.csv");
+
+    using var arq = File.CreateText(pathArq);
+
+    Console.ReadLine();
+
+    
+}
+
+
+
+/*---------String Builder----------*/
 
